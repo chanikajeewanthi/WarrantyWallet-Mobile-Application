@@ -1,3 +1,4 @@
+import { Warranty } from "@/types/warranty";
 import { db } from "./firebase";
 import {
   collection,
@@ -29,11 +30,23 @@ export const getUserWarranties = async (userId: string) => {
   }));
 };
 
-export const getWarrantyById = async (id: string) => {
+// export const getWarrantyById = async (id: string) => {
+//   const ref = doc(db, "warranties", id);
+//   const snap = await getDoc(ref);
+
+//   return { id: snap.id, ...snap.data() };
+// };
+
+export const getWarrantyById = async (id: string): Promise<Warranty | null> => {
   const ref = doc(db, "warranties", id);
   const snap = await getDoc(ref);
 
-  return { id: snap.id, ...snap.data() };
+  if (!snap.exists()) return null;
+
+  return {
+    id: snap.id,
+    ...(snap.data() as Omit<Warranty, "id">),
+  };
 };
 
 export const deleteWarranty = async (id: string) => {
@@ -41,5 +54,6 @@ export const deleteWarranty = async (id: string) => {
 };
 
 export const updateWarranty = async (id: string, data: any) => {
-  return await updateDoc(doc(db, "warranties", id), data);
+  const ref = doc(db, "warranties", id);
+  await updateDoc(ref, data);
 };

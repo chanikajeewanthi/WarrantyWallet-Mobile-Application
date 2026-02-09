@@ -13,7 +13,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       await login(email, password);
-      router.replace("../dashboard");
+      router.replace("/dashboard");
     } catch (error: any) {
       Alert.alert("Login Failed", error.message);
     }

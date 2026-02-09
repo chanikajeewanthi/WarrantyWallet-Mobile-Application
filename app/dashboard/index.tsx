@@ -1,13 +1,21 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "expo-router";
 
 export default function Dashboard() {
   const { logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await logout();
+    router.replace("/auth/login");
+  };
+
 
   return (
     <View style={{ flex: 1, backgroundColor: "#F8F9FF", padding: 20 }}>
-      
+
       {/* Title */}
       <Text style={{ fontSize: 26, fontWeight: "bold", marginTop: 30 }}>
         My Dashboard 📌
@@ -37,7 +45,7 @@ export default function Dashboard() {
 
       {/* Logout Button */}
       <TouchableOpacity
-        onPress={logout}
+        onPress={handleLogout}
         style={{
           marginTop: 30,
           backgroundColor: "#EF4444",
