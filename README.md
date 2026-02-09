@@ -1,50 +1,122 @@
-# Welcome to your Expo app 👋
+WarrantyWallet – Mobile Application
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+WarrantyWallet is a mobile application built using Expo (React Native) that helps users store, manage, and track product warranties in one place.
+Users can add warranty details, attach a product image using the device camera, view expiry dates, edit warranties, and delete them when no longer needed.
 
-## Get started
+This app focuses on simplicity, offline-friendly local image storage, and a clean user experience.
 
-1. Install dependencies
+🚀Features
 
-   ```bash
-   npm install
-   ```
+ User Authentication (Firebase Authentication)
 
-2. Start the app
+ Add new warranties
 
-   ```bash
-   npx expo start
-   ```
+ Edit existing warranties
 
-In the output, you'll find options to open the app in a
+ Delete warranties with confirmation
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+ Capture product images using the device camera
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+ Store images locally on the device (no Firebase Storage required)
 
-## Get a fresh project
+ Track warranty expiry dates
 
-When you're ready, run:
+ View detailed warranty information
 
-```bash
-npm run reset-project
-```
+ Smooth navigation using Expo Router
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+🛠️ Technologies Used
 
-## Learn more
+Expo
 
-To learn more about developing your project with Expo, look at the following resources:
+React Native
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Expo Router
 
-## Join the community
+Firebase Authentication
 
-Join our community of developers creating universal apps.
+Firebase Firestore
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Expo Camera
+
+Expo Image Picker
+
+Expo File System
+
+TypeScript
+
+📂 Project Structure (Simplified)
+app/
+ └── dashboard/
+     └── warranties/
+         ├── index.tsx        # Warranty list
+         ├── form.tsx          # Add warranty details form
+         ├── [id].tsx         # Warranty details
+         └── edit/
+             └── [id].tsx     # Edit warranty
+
+services/
+ └── warrantyService.ts
+ └── firebase.ts
+
+types/
+ └── warranty.ts
+
+context/
+ └── AuthContext.tsx
+
+⚙️ Setup Instructions
+
+Install Dependencies
+ npm install
+
+Install Expo CLI (if not installed)
+ npm install -g expo-cli
+
+Firebase Configuration
+
+ Create a Firebase project and enable
+
+ Firebase Authentication (Email/Password)
+
+ Cloud Firestore
+
+Add my Firebase configuration inside my project (example: services/firebase.ts).
+
+⚠️ Firebase Storage is NOT used in this project.
+
+Run the Application
+npx expo start & npm start
+
+Then:
+Scan the QR code using Expo Go (Android)
+
+Or run on an emulator
+
+📷 Camera & Permissions
+
+The app uses the device camera to capture warranty images.
+
+Required permissions:
+
+Camera access
+
+Permissions are handled automatically using Expo Camera and Expo Image Picker.
+
+🧪 How to Use
+
+Login or register
+
+Navigate to Warranties
+
+Tap Add Warranty
+
+Enter warranty details
+
+Capture a product image (optional)
+
+Save the warranty
+
+View, edit, or delete warranties anytime
+
+Track warranty expiry status
