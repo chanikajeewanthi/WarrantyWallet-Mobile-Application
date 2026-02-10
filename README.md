@@ -1,122 +1,160 @@
-WarrantyWallet – Mobile Application
+📱 WarrantyWallet – Mobile Application
+A Digital Warranty Management System
+📌 1. Introduction
 
-WarrantyWallet is a mobile application built using Expo (React Native) that helps users store, manage, and track product warranties in one place.
-Users can add warranty details, attach a product image using the device camera, view expiry dates, edit warranties, and delete them when no longer needed.
+WarrantyWallet is a mobile application developed using Expo (React Native) to provide a digital solution for managing product warranties.
+In traditional practices, physical warranty cards are often misplaced, damaged, or forgotten. WarrantyWallet addresses this problem by allowing users to securely store warranty details and track expiry dates using a mobile-friendly interface.
 
-This app focuses on simplicity, offline-friendly local image storage, and a clean user experience.
+The application enables users to add, view, update, and delete warranty records, along with capturing product images using the device camera. The system is designed to be simple, cost-effective, and offline-friendly, as images are stored locally without using Firebase Storage.
 
-🚀Features
+🎯 2. Objectives
 
- User Authentication (Firebase Authentication)
+The primary objectives of this project are:
 
- Add new warranties
+✅ To digitize product warranty management
 
- Edit existing warranties
+✅ To provide a user-friendly mobile experience
 
- Delete warranties with confirmation
+✅ To reduce dependency on physical warranty documents
 
- Capture product images using the device camera
+✅ To track warranty expiry dates effectively
 
- Store images locally on the device (no Firebase Storage required)
+✅ To demonstrate mobile application development skills using modern frameworks
 
- Track warranty expiry dates
+🚀 3. Core Features
 
- View detailed warranty information
+🔐 User Authentication
 
- Smooth navigation using Expo Router
+Secure login and registration using Firebase Authentication
 
-🛠️ Technologies Used
+🧾 Warranty Management
 
-Expo
+Add new warranty details
 
-React Native
+Edit existing warranties
 
-Expo Router
+Delete warranties with confirmation prompts
 
-Firebase Authentication
+📷 Camera Integration
 
-Firebase Firestore
+Capture product images using the device camera
 
-Expo Camera
+Store images locally on the device (no cloud storage)
 
-Expo Image Picker
+⏰ Expiry Tracking
 
-Expo File System
+Display warranty expiry dates
 
-TypeScript
+Visual status indicators (Active / Expiring Soon / Expired)
 
-📂 Project Structure (Simplified)
+🧭 Navigation
+
+Smooth and structured navigation using Expo Router
+
+🛠️ 4. Technologies Used
+Technology	Purpose
+⚛️ Expo	Mobile app framework
+📱 React Native	UI development
+🧭 Expo Router	File-based navigation
+🔐 Firebase Authentication	User authentication
+☁️ Firebase Firestore	Warranty data storage
+📷 Expo Camera	Capture product images
+🖼️ Expo Image Picker	Image selection
+📂 Expo File System	Local image storage
+🧪 TypeScript	Type safety
+🧱 5. System Architecture
+
+Frontend: React Native (Expo)
+
+Backend Services: Firebase Authentication & Firestore
+
+Storage: Local device storage (images)
+
+Routing: File-based routing using Expo Router
+
+📂 6. Project Structure
 app/
  └── dashboard/
      └── warranties/
-         ├── index.tsx        # Warranty list
-         ├── form.tsx          # Add warranty details form
-         ├── [id].tsx         # Warranty details
+         ├── index.tsx        # Warranty list screen
+         ├── form.tsx         # Add warranty form
+         ├── [id].tsx         # Warranty details screen
          └── edit/
-             └── [id].tsx     # Edit warranty
+             └── [id].tsx     # Edit warranty screen
 
 services/
- └── warrantyService.ts
- └── firebase.ts
+ ├── warrantyService.ts      # Firestore CRUD logic
+ └── firebase.ts             # Firebase configuration
 
 types/
- └── warranty.ts
+ └── warranty.ts             # Warranty type definition
 
 context/
- └── AuthContext.tsx
+ └── AuthContext.tsx         # Authentication context
 
-⚙️ Setup Instructions
+⚙️ 7. Setup and Installation
+📥 Step 1: Install Dependencies
+npm install
 
-Install Dependencies
- npm install
+🧰 Step 2: Install Expo CLI (If Required)
+npm install -g expo-cli
 
-Install Expo CLI (if not installed)
- npm install -g expo-cli
+🔥 Step 3: Firebase Configuration
 
-Firebase Configuration
+Create a Firebase project and enable:
 
- Create a Firebase project and enable
+🔐 Firebase Authentication (Email & Password)
 
- Firebase Authentication (Email/Password)
+☁️ Cloud Firestore
 
- Cloud Firestore
+Add your Firebase configuration inside:
 
-Add my Firebase configuration inside my project (example: services/firebase.ts).
+services/firebase.ts
 
-⚠️ Firebase Storage is NOT used in this project.
+▶️ Step 4: Run the Application
+npx expo start
 
-Run the Application
-npx expo start & npm start
 
-Then:
-Scan the QR code using Expo Go (Android)
+or
 
-Or run on an emulator
+npm start
 
-📷 Camera & Permissions
 
-The app uses the device camera to capture warranty images.
+📲 Run options:
 
-Required permissions:
+Scan QR code using Expo Go
 
-Camera access
+Android Emulator
+
+📷 8. Permissions Handling
+
+The application requests the following permission:
+
+📸 Camera access
 
 Permissions are handled automatically using Expo Camera and Expo Image Picker.
 
-🧪 How to Use
+🧪 9. User Guide
 
-Login or register
+🔑 Register or log in
 
-Navigate to Warranties
+🏠 Navigate to Dashboard
 
-Tap Add Warranty
+➕ Add a new warranty
 
-Enter warranty details
+📝 Enter warranty details
 
-Capture a product image (optional)
+📷 Capture a product image (optional)
 
-Save the warranty
+💾 Save the warranty
 
-View, edit, or delete warranties anytime
+👁️ View, ✏️ edit, or 🗑️ delete warranties
 
-Track warranty expiry status
+⏳ Monitor expiry status
+
+🔗 10. Build Link
+
+Built in firebase:
+
+application-fb12d903-dbc8-450e-aa41-e1fa51af76ff.aab
+
