@@ -1,5 +1,6 @@
 📱 WarrantyWallet – Mobile Application
 A Digital Warranty Management System
+
 📌 1. Introduction
 
 WarrantyWallet is a mobile application developed using Expo (React Native) to provide a digital solution for managing product warranties.
@@ -52,16 +53,18 @@ Visual status indicators (Active / Expiring Soon / Expired)
 Smooth and structured navigation using Expo Router
 
 🛠️ 4. Technologies Used
-Technology	Purpose
-⚛️ Expo	Mobile app framework
-📱 React Native	UI development
-🧭 Expo Router	File-based navigation
+
+Technology			Purpose
+⚛️ Expo			Mobile app framework
+📱 React Native		UI development
+🧭 Expo Router		File-based navigation
 🔐 Firebase Authentication	User authentication
-☁️ Firebase Firestore	Warranty data storage
-📷 Expo Camera	Capture product images
+☁️ Firebase Firestore		Warranty data storage
+📷 Expo Camera		Capture product images
 🖼️ Expo Image Picker	Image selection
-📂 Expo File System	Local image storage
-🧪 TypeScript	Type safety
+📂 Expo File System		Local image storage
+🧪 TypeScript			Type safety
+
 🧱 5. System Architecture
 
 Frontend: React Native (Expo)
@@ -73,6 +76,7 @@ Storage: Local device storage (images)
 Routing: File-based routing using Expo Router
 
 📂 6. Project Structure
+
 app/
  └── dashboard/
      └── warranties/
@@ -93,6 +97,7 @@ context/
  └── AuthContext.tsx         # Authentication context
 
 ⚙️ 7. Setup and Installation
+
 📥 Step 1: Install Dependencies
 npm install
 
@@ -157,4 +162,5 @@ Permissions are handled automatically using Expo Camera and Expo Image Picker.
 Built in firebase:
 
 application-fb12d903-dbc8-450e-aa41-e1fa51af76ff.aab
+
 
