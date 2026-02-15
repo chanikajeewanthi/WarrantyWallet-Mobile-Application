@@ -23,7 +23,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Keep user logged in
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -33,17 +33,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsubscribe;
   }, []);
 
-  // Login
+
   const login = async (email: string, password: string) => {
     await signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Register
+
   const register = async (email: string, password: string) => {
     await createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // Logout
+
   const logout = async () => {
     await signOut(auth);
   };
@@ -57,7 +57,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Custom Hook
 export function useAuth() {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("AuthContext missing!");

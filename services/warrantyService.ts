@@ -30,12 +30,6 @@ export const getUserWarranties = async (userId: string) => {
   }));
 };
 
-// export const getWarrantyById = async (id: string) => {
-//   const ref = doc(db, "warranties", id);
-//   const snap = await getDoc(ref);
-
-//   return { id: snap.id, ...snap.data() };
-// };
 
 export const getWarrantyById = async (id: string): Promise<Warranty | null> => {
   const ref = doc(db, "warranties", id);
