@@ -159,8 +159,8 @@ Permissions are handled automatically using Expo Camera and Expo Image Picker.
 
 🔗 10. Build Link
 
-Built in firebase:
+Built with expo eas service  :
 
-application-fb12d903-dbc8-450e-aa41-e1fa51af76ff.aab
+https://expo.dev/artifacts/eas/m4jJgPbJdyx2xdfSDbe3QQ.apk
 
 
