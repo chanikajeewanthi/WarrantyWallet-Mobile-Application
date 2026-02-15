@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, TextInput } from "react-native";
 import { Link } from "expo-router";
 import { useAuth } from "../../../context/AuthContext";
 import { getUserWarranties } from "../../../services/warrantyService";
 import { getWarrantyStatus } from "../../../utils/warrantyStatus";
-import { TextInput } from "react-native";
 
 export default function WarrantyList() {
   const { user } = useAuth();
@@ -12,82 +11,49 @@ export default function WarrantyList() {
   const [search, setSearch] = useState("");
   const [refreshing, setRefreshing] = useState(false);
 
-
   useEffect(() => {
     if (user) loadData();
   }, []);
-
-  // const loadData = async () => {
-  //   const data = await getUserWarranties(user!.uid);
-  //   setWarranties(data);
-  // };
 
   const loadData = async () => {
     try {
       const data = await getUserWarranties(user!.uid);
       setWarranties(data);
     } catch (error) {
-      console.log("Failed to load warranties", error);
+      console.log(error);
     }
   };
 
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await loadData();
-    setRefreshing(false);
-  };
-
-
-  const filteredWarranties = warranties.filter((item) =>
+  const filtered = warranties.filter((item) =>
     item.productName.toLowerCase().includes(search.toLowerCase())
   );
 
-
   return (
-    <View style={{ flex: 1, padding: 20, backgroundColor: "#F8F9FF" }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold" }}>
-        My Warranties 🧾
-      </Text>
+    <View className="flex-1 bg-gray-50 px-6 pt-6">
+      <Text className="text-3xl font-bold text-gray-900">My Warranties 🧾</Text>
 
+      <TextInput
+        placeholder="Search by product name..."
+        value={search}
+        onChangeText={setSearch}
+        className="mt-4 bg-white px-4 py-3 rounded-xl shadow-md text-gray-800"
+      />
 
       <FlatList
-        data={filteredWarranties}
+        data={filtered}
         keyExtractor={(item) => item.id}
         refreshing={refreshing}
-        onRefresh={onRefresh}
-
+        onRefresh={loadData}
+        className="mt-4"
         renderItem={({ item }) => {
           const status = getWarrantyStatus(item.expiryDate);
-
           return (
             <Link href={`/dashboard/warranties/${item.id}`} asChild>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "white",
-                  padding: 18,
-                  borderRadius: 18,
-                  marginTop: 15,
-                  borderLeftWidth: 6,
-                  borderLeftColor: status.color,
-                }}
-              >
-                <Text style={{ fontSize: 18, fontWeight: "600" }}>
-                  {item.productName}
-                </Text>
-
-                <Text style={{ color: "gray", marginTop: 4 }}>
-                  Expiry: {item.expiryDate}
-                </Text>
-
-                <Text
-                  style={{
-                    marginTop: 6,
-                    fontWeight: "600",
-                    color: status.color,
-                  }}
-                >
-                  {status.label}
-                  {status.label !== "Expired" && ` • ${status.daysLeft} days left`}
+              <TouchableOpacity className={`mt-4 bg-white p-4 rounded-2xl shadow-md border-l-4 border-[${status.color}]`}>
+                <Text className="text-lg font-semibold">{item.productName}</Text>
+                <Text className="text-gray-500 mt-1">Expiry: {item.expiryDate}</Text>
+                <Text className={`mt-1 font-semibold`} style={{ color: status.color }}>
+                  {status.label} {status.label !== "Expired" && `• ${status.daysLeft} days left`}
                 </Text>
               </TouchableOpacity>
             </Link>
@@ -95,36 +61,12 @@ export default function WarrantyList() {
         }}
       />
 
-      <TextInput
-        placeholder="Search by product name..."
-        value={search}
-        onChangeText={setSearch}
-        style={{
-          marginTop: 15,
-          backgroundColor: "white",
-          padding: 14,
-          borderRadius: 14,
-          fontSize: 16,
-        }}
-      />
+     <Link href="/dashboard/warranties/form" asChild>
+  <TouchableOpacity className="absolute bottom-8 right-6 bg-blue-600 w-16 h-16 rounded-full items-center justify-center shadow-lg z-50">
+    <Text className="text-white text-3xl font-bold">➕</Text>
+  </TouchableOpacity>
+</Link>
 
-
-      {/* Add Warranty Button */}
-      <Link href="/dashboard/warranties/form" asChild>
-        <TouchableOpacity
-          style={{
-            marginTop: 20,
-            backgroundColor: "#5A67F2",
-            padding: 18,
-            borderRadius: 18,
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 18 }}>
-            ➕ Add Warranty
-          </Text>
-        </TouchableOpacity>
-      </Link>
     </View>
   );
 }

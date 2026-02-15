@@ -6,7 +6,6 @@ import { useAuth } from "../../../context/AuthContext";
 export default function Login() {
   const router = useRouter();
   const { login } = useAuth();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,57 +19,60 @@ export default function Login() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#F8F9FF", padding: 25 }}>
-      <Text style={{ fontSize: 32, fontWeight: "bold", marginTop: 80 }}>
+    <View className="flex-1 bg-[#F7F8FC] px-6 pt-24">
+
+
+      <Text className="text-3xl font-extrabold text-gray-900 text-center">
         WarrantyWallet 💳
       </Text>
-
-      <Text style={{ fontSize: 16, color: "gray", marginTop: 8 }}>
+      <Text className="text-center text-gray-500 text-sm mt-2 mb-12">
         Login to continue
       </Text>
 
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={{
-          marginTop: 40,
-          backgroundColor: "white",
-          padding: 15,
-          borderRadius: 15,
-        }}
-      />
 
-      <TextInput
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-        style={{
-          marginTop: 15,
-          backgroundColor: "white",
-          padding: 15,
-          borderRadius: 15,
-        }}
-      />
+      <View className="space-y-8">
+
+        <View className="bg-white rounded-2xl px-6 py-5 shadow-lg border border-gray-100">
+          <Text className="text-gray-500 text-xs font-semibold mb-1">Email</Text>
+          <TextInput
+            placeholder="Enter your email"
+            value={email}
+            onChangeText={setEmail}
+            className="bg-[#F4F5F7] rounded-xl px-4 py-3 text-gray-900 text-[15px]"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+
+
+        <View className="bg-white rounded-2xl px-6 py-5 shadow-lg border border-gray-100">
+          <Text className="text-gray-500 text-xs font-semibold mb-1">Password</Text>
+          <TextInput
+            placeholder="Enter your password"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            className="bg-[#F4F5F7] rounded-xl px-4 py-3 text-gray-900 text-[15px]"
+          />
+        </View>
+      </View>
+
 
       <TouchableOpacity
         onPress={handleLogin}
-        style={{
-          marginTop: 25,
-          backgroundColor: "#5A67F2",
-          padding: 18,
-          borderRadius: 18,
-          alignItems: "center",
-        }}
+        activeOpacity={0.9}
+        className="mt-12 py-4 rounded-2xl shadow-xl items-center"
+        style={{ backgroundColor: "#9a1e8a" }}
       >
-        <Text style={{ color: "white", fontSize: 18 }}>Login</Text>
+        <Text className="text-white text-lg font-semibold tracking-wide">
+          Login
+        </Text>
       </TouchableOpacity>
 
-      <Text style={{ marginTop: 20, textAlign: "center" }}>
+      <Text className="mt-6 text-center text-gray-600 text-sm">
         New user?{" "}
-        <Link href="/auth/register" style={{ color: "#5A67F2" }}>
-          Register
+        <Link href="/auth/register" asChild>
+          <Text className="text-blue-600 font-semibold">Register</Text>
         </Link>
       </Text>
     </View>
